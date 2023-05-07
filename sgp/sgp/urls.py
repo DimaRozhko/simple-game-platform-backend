@@ -16,17 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
-
 from sgp.game_info import game_info_view
 from sgp.game_time import game_time_view
 from sgp.game_user import game_user_view
 
-
-# router = routers.SimpleRouter()
-# router.register(r'users', UserViewSet)
-# router.register(r'accounts', AccountViewSet)
-# urlpatterns = router.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
