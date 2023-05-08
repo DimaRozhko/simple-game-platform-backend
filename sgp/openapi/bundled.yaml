@@ -111,6 +111,12 @@ paths:
                     password:
                       type: string
           description: Successfull
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Unauthorized
         '403':
           content:
             application/json:
