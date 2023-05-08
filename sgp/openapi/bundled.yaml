@@ -1,0 +1,244 @@
+openapi: 3.0.2
+servers:
+  - url: http://127.0.0.1:8000/v1
+info:
+  title: ''
+  version: ''
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+paths:
+  /game-time:
+    get:
+      security:
+        - basicAuth: []
+      operationId: listget_game_times
+      description: ''
+      summary: Get game time by id
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    start_time:
+                      type: string
+                    end_time:
+                      type: string
+                    game_time:
+                      type: string
+          description: Successfull
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+          description: Invalid username/password.
+      tags:
+        - game-time
+  /game-inf:
+    get:
+      security:
+        - basicAuth: []
+      operationId: listget_game_infs
+      description: ''
+      summary: Get information about games
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    rules:
+                      type: string
+                    history:
+                      type: string
+          description: Successfull
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+          description: Invalid username/password.
+      tags:
+        - game-inf
+  /auth/log-in:
+    get:
+      security:
+        - basicAuth: []
+      operationId: listauth_log_ins
+      description: ''
+      summary: Authorization (log in) gamer
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+          description: Successfull
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+          description: Invalid username/password.
+      tags:
+        - auth
+  /user/info:
+    get:
+      security:
+        - basicAuth: []
+      operationId: listget_user_infs
+      description: ''
+      summary: Get information about user
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    best_time:
+                      type: string
+                    favorite_game_id:
+                      type: integer
+                    game_time_id:
+                      type: integer
+          description: Successfull
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+          description: Invalid username/password.
+      tags:
+        - user
+  /auth/sign-up:
+    post:
+      security:
+        - basicAuth: []
+      operationId: createauth_sign_up
+      description: ''
+      summary: Authorization (sign up) gamer
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+          description: Successfull
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+          description: Invalid username/password.
+      tags:
+        - auth
+  /game-process/start-time:
+    post:
+      security:
+        - basicAuth: []
+      operationId: createget_start_time
+      description: ''
+      summary: Set start game
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Successfull
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+          description: Invalid username/password.
+      tags:
+        - game-process

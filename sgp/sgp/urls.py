@@ -20,6 +20,7 @@ from sgp.game_info import game_info_view
 from sgp.game_time import game_time_view
 from sgp.game_user import game_user_view
 
+from rest_framework.schemas import get_schema_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +31,7 @@ urlpatterns = [
     path('auth/log-in', game_user_view.auth_log_in, name='auth_log_in'),
     path('auth/sign-up', game_user_view.auth_sign_up, name='auth_sign_up'),
     path('user/info', game_user_view.get_user_inf, name='get_user_inf'),
-    path('game-process/start-time', game_time_view.get_start_time, name='get_user_inf')
+    path('game-process/start-time', game_time_view.get_start_time, name='get_user_inf'),
+
+    path('schema/', get_schema_view())
 ]
