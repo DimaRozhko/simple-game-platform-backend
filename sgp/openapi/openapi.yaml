@@ -120,6 +120,12 @@ paths:
                   detail:
                     type: string
           description: 'Invalid username/password.'
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: "Unauthorized"
       tags:
       - auth
   /user/info:
