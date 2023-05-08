@@ -16,3 +16,4 @@
 >#### Go to sgp directory `cd .\sgp\` to run server locally  `py manage.py runserver` for a dev server. Navigate to `http://127.0.0.1:8000/`. The application will automatically reload if you change any of the source files.
 ### API
 >#### There is postmen collection in `LAB-WEB SimpleGamePlatform Python.postman_collection.json`. You can used it to check request.
+>#### You can run `redocly preview-docs .\openapi\bundled.yaml` to check redoc api
