@@ -22,6 +22,9 @@ from sgp.game_user import game_user_view
 
 from rest_framework.schemas import get_schema_view
 
+from fifteen.views import fifteen
+from game.views import index, game, choose_game
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -33,5 +36,11 @@ urlpatterns = [
     path('user/info', game_user_view.get_user_inf, name='get_user_inf'),
     path('game-process/start-time', game_time_view.get_start_time, name='get_user_inf'),
 
-    path('schema/', get_schema_view())
+    path('schema/', get_schema_view()),
+
+
+    path('choose-game/', choose_game),
+    path('game/', index),
+    path('game/fifteen/', fifteen),
+    path('game/tic-tac-toe/play/<room_code>', game),
 ]
