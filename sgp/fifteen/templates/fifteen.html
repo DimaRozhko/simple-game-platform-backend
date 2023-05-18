@@ -1,0 +1,21 @@
+{% include 'base.html' %} {% block content%} {% load static %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<div class="container">
+  <p>
+    <div><b>customer id logged in:</b></div>
+    <div id="customer_id_logged_in">{{ customer_id_logged_in }}</div>
+    <div><b>game start time:</b></div>
+    <div id="start_time">{{ start_time }}</div>
+  </p>
+</div>
+
+<script>
+  var socket = new WebSocket("ws://127.0.0.1:8000/ws/fifteen_url/");
+  socket.onmessage = function (event) {
+    var data = JSON.parse(event.data);
+    console.log(data);
+    document.querySelector("#customer_id_logged_in").innerText = data.customer_id_logged_in;
+    document.querySelector("#start_time").innerText = data.start_time ? data.start_time : "null";
+  };
+</script>
+{% endblock content %}
