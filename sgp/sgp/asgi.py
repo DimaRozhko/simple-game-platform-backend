@@ -16,12 +16,15 @@ from channels.auth import AuthMiddlewareStack
 
 from fifteen.routing import ws_fifteen_urlpatterns
 from game.routing import ws_tic_tac_toe_urlpatterns
+from admininfo.routing import ws_admininfo_urlpatterns
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sgp.settings')
 
 application = ProtocolTypeRouter(
     {
         'http': get_asgi_application(),
-        'websocket': AuthMiddlewareStack(URLRouter([*ws_tic_tac_toe_urlpatterns, *ws_fifteen_urlpatterns]))
+        'websocket': AuthMiddlewareStack(URLRouter([*ws_tic_tac_toe_urlpatterns,
+                                                    *ws_fifteen_urlpatterns,
+                                                    *ws_admininfo_urlpatterns]))
     }
 )

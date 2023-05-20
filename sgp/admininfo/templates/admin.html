@@ -1,0 +1,56 @@
+{% include 'base.html' %} {% block content%} {% load static %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<div class="container">
+  <p>
+    <div><b>customer id logged in:</b></div>
+    <div id="customer_id_logged_in">{{ customer_id_logged_in }}</div>
+    <div><b>game start time:</b></div>
+    <div id="start_time">{{ start_time }}</div>
+  </p>
+</div>
+
+<table class="container" id="adminInfoTable">
+    <thead>
+        <tr>
+            <th colspan="4">
+                <b>Web socket working result</b>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="sgp-color">
+            <td><b>Operation name</b></td>
+            <td><b>Data</b></td>
+            <td><b>Result</b></td>
+            <td><b>Completion date/time</b></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<script>
+  var socket = new WebSocket("ws://127.0.0.1:8000/ws/admin_url/");
+  socket.onmessage = function (event) {
+
+    var data = JSON.parse(event.data);
+    console.log(data);
+    document.querySelector("#customer_id_logged_in").innerText = data.customer_id_logged_in;
+    document.querySelector("#start_time").innerText = data.start_time ? data.start_time : "null";
+
+    if (data.is_enriched && data.is_enriched == true) {
+        var table = document.getElementById("adminInfoTable");
+        var rowInTable = document.getElementsByTagName("tr");
+        var rowInfo = table.insertRow(rowInTable.length);
+        var operationNameCell = rowInfo.insertCell(0);
+        var dataCell = rowInfo.insertCell(1);
+        var resultCell = rowInfo.insertCell(2);
+        var completionTimeCell = rowInfo.insertCell(3);
+        operationNameCell.innerHTML = data.operation_name;
+        dataCell.innerHTML = data.data_operation;
+        resultCell.innerHTML = data.result_operation;
+        completionTimeCell.innerHTML = data.end_operation_time;
+    }
+  };
+</script>
+{% endblock content %}

@@ -22,8 +22,11 @@ from sgp.game_user import game_user_view
 
 from rest_framework.schemas import get_schema_view
 
+from admininfo.views import admin_inf
 from fifteen.views import fifteen
 from game.views import index, game, choose_game
+
+from send_mail_app.views import send_mail_to_all, schedule_mail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,4 +46,8 @@ urlpatterns = [
     path('game/', index),
     path('game/fifteen/', fifteen),
     path('game/tic-tac-toe/play/<room_code>', game),
+    path('admin-inf/', admin_inf),
+
+    path('sendmail/', send_mail_to_all),
+    path('schedulemail/', schedule_mail),
 ]
