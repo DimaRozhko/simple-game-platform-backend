@@ -19,6 +19,13 @@
 >### _**Documentation**_
 >>#### Description of lab was described in google docs ([link](https://docs.google.com/document/d/1dXONhla7aJDiZya2mbLElPPxlYR59Ru0Vh9PFQf5ets))
 
+>### _**Lab number: 3**_
+>>#### _The purpose of the work:_ learn how to use the tools of the Python/Celery library to organize asynchronous execution of Web application tasks.
+>>#### _General task:_ develop functions for performing asynchronous tasks of a Web application using the Celery library.
+>>#### _Development tools:_ Python 3, Django, Celery, redis, Pycharm Community Edition
+>### _**Documentation**_
+>>#### Description of lab was described in google docs ([link](https://docs.google.com/document/d/14cxG3mArT_rXRX2nIVQrF0YvfeJPfl71FpGr-h6ZPWo))
+
 ### Development server
 >#### Go to sgp directory `cd .\sgp\` to run server locally  `py manage.py runserver` for a dev server. Navigate to `http://127.0.0.1:8000/`. The application will automatically reload if you change any of the source files.
 ### API
