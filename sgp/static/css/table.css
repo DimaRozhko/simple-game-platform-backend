@@ -1,0 +1,9 @@
+table, td {
+  border: 1px solid;
+  border-collapse: collapse;
+  margin-left: 1em;
+}
+
+thead, .sgp-color {
+    background-color: #00151C;
+}

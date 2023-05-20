@@ -44,8 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sgp',
     'rest_framework',
+    'admininfo',
     'fifteen',
-    'game'
+    'game',
+    'send_mail_app',
+    'django_celery_results',
+    'django_celery_beat'
 ]
 
 
@@ -153,3 +157,36 @@ CHANNEL_LAYERS = {
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# Celery settings
+# CELERY_BROKER_URL = "redis://127.0.0.1:6379"
+# CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379"
+
+#CELERY BEAT
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# CELERY SETTINGS
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = {'application/json'}
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Paris'
+CELERY_RESULT_BACKEND = 'django-db'
+
+
+# SMTP SETTINGS
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "dimarozhko2000@gmail.com"
+EMAIL_HOST_PASSWORD = "aynlfvqogkrjnsbr"
+DEFAULT_FROM_EMAIL = 'Celery <dimarozhko2000@gmail.com>'
+
+
+# aynlfvqogkrjnsbr
+
+# celery -A sgp worker -l info
+# celery -A sgp worker -B
+# python manage.py makemigrations sgp
+# python manage.py migrate --run-syncdb
