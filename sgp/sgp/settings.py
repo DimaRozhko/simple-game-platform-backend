@@ -180,11 +180,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "dimarozhko2000@gmail.com"
-EMAIL_HOST_PASSWORD = "aynlfvqogkrjnsbr"
+EMAIL_HOST_PASSWORD = ""
 DEFAULT_FROM_EMAIL = 'Celery <dimarozhko2000@gmail.com>'
 
-
-# aynlfvqogkrjnsbr
 
 # celery -A sgp worker -l info
 # celery -A sgp worker -B
